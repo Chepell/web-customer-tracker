@@ -1,7 +1,7 @@
 package com.voytenko.springdemo.controller;
 
-import com.voytenko.springdemo.dao.CustomerDAO;
 import com.voytenko.springdemo.entity.Customer;
+import com.voytenko.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +19,14 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	// need to inject customer DAO
+	// need to inject CustomerService
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerService customerService;
 
 	@GetMapping("/list")
 	public String listCustomer(Model model) {
-		// get the customers from DAO
-		List<Customer> customers = customerDAO.getCustomers();
+		// get the customers from CustomerService
+		List<Customer> customers = customerService.getCustomers();
 		// add customers to model
 		model.addAttribute("customers", customers);
 		return "list-customers";
