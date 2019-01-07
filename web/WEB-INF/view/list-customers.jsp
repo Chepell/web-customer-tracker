@@ -16,7 +16,7 @@
           href="${pageContext.request.contextPath}/resources/css/style.css"/>
 </head>
 <body>
-<div id="wapper">
+<div id="wrapper">
     <div id="header">
         <h2>CRM - Customer Relationship Manager</h2>
     </div>
