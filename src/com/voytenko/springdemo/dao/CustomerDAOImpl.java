@@ -7,8 +7,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -38,7 +36,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public void saveCustomer(Customer customer) {
 		// get the current hibernate session
 		Session session = sessionFactory.getCurrentSession();
-		// save objects
-		session.save(customer);
+		// save/update objects
+		session.saveOrUpdate(customer);
+	}
+
+	@Override
+	public Customer getCustomer(int id) {
+		// get the current hibernate session
+		Session session = sessionFactory.getCurrentSession();
+		// get customer by id
+		Customer customer = session.get(Customer.class, id);
+		// return the result
+		return customer;
 	}
 }
